@@ -372,3 +372,13 @@ ggplot(shaq30, aes(x = FGA-FGA_bar, y = PTS)) +
        y = "Points") + 
   geom_abline(data = m3_shaq_30_smp, aes(intercept = a, slope = b), color = "#FDB927", linewidth = .1, alpha = .5) +
   theme_minimal()
+
+
+#Exercise
+#Draw a large number of values from a particular probability distribution and sum them up.
+#Repeat the procedure many times and plot all sums.
+#Change the underlying probability distribution and repeat.
+hist(replicate(1000, sum(runif(16,-1,1))))
+
+
+
