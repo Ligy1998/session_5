@@ -35,7 +35,7 @@ sim_pts_dynamic <- function(N_games, N_shots, pFGA, pFTA, p3PA, hFG, hFT, h3P){
   TP <- rbinom(N_games, round(p3PA * N_shots, 0), prob = h3P)*3
   
   FT + FG + TP
-  
+#一千场比赛中，场均得分的二项实验的分布
 }     
 
 pts_dynamic <- tibble(pts = sim_pts_dynamic(N_games = 1e3, N_shots = 30, pFGA = .65, pFTA = .35, p3PA = 0, hFG = .7, hFT = .2, h3P = .2))
@@ -49,12 +49,12 @@ ggplot(pts_dynamic, aes(x = pts)) +
 
 ##  Priors on mu and sigma
 
-### mu
+### mu  的正态分布
 range <- seq(-10, 60, length.out = 100) # range
 d <- dnorm(range, mean = 20, sd = 8) # densities
 mu <- data.frame(range, d)
 ggplot(mu, aes(x = range, y = d)) +
-  geom_line(size = 1, color = "#552583") +
+  geom_line(linewidth = 1, color = "#552583") +
   scale_x_continuous(limits = c(-10,60), breaks = seq(-10,60, 5)) + 
   labs(x = expression(mu), 
        y = "Density") +
@@ -65,7 +65,7 @@ range <- seq(-1, 11, length.out = 100) # sample space
 d <- dunif(range, min = 0, max = 10) # densities
 sigma <- data.frame(range, d)
 ggplot(sigma, aes(x = range, y = d)) +
-  geom_line(size = 1, color = "#552583") +
+  geom_line(linewidth= 1, color = "#552583") +
   scale_x_continuous(limits = c(-1,11), breaks = seq(-1,11, 1)) + 
   labs(x = expression(sigma), 
        y = "Density") +
