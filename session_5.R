@@ -379,6 +379,10 @@ ggplot(shaq30, aes(x = FGA-FGA_bar, y = PTS)) +
 #Repeat the procedure many times and plot all sums.
 #Change the underlying probability distribution and repeat.
 hist(replicate(1000, sum(runif(16,-1,1))))
+hist(replicate(1000, sum(rnorm(16, mean = 0, sd = 1))))
+hist(replicate(1000, sum(rbeta(16, shape1 = 2, shape2 = 2))))
+hist(replicate(1000, sum(rexp(16, rate = 0.5))))
+hist(replicate(1000, sum(rgamma(16, shape = 2, rate = 0.5))))
 
 
 
