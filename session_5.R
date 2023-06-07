@@ -112,7 +112,8 @@ precis(m_fit)
 # Use model to analyze data
 
 ## load data
-shaq <- read_csv("data/shaq.csv")
+
+shaq <- read_csv("shaq.csv")
 
 ggplot(shaq, aes(x = PTS)) + 
   geom_histogram(fill = "#552583", alpha = .5, color = "#552583", bins = 30) + 
@@ -158,8 +159,8 @@ HPDI(m_shaq_smp$sigma)
 ## densities
 range <- seq(-10, 60, length.out = 100) # range
 smp_dens <- m_shaq_smp %>% 
-  mutate(smp = row_number()) %>% View()
-expand_grid(range) %>% 
+  mutate(smp = row_number()) %>%
+  expand_grid(range) %>% 
   mutate(d = dnorm(range, mu, sigma))
 
 ggplot(smp_dens, aes(x = range, y = d, group = smp)) +
@@ -383,6 +384,5 @@ hist(replicate(1000, sum(rnorm(16, mean = 0, sd = 1))))
 hist(replicate(1000, sum(rbeta(16, shape1 = 2, shape2 = 2))))
 hist(replicate(1000, sum(rexp(16, rate = 0.5))))
 hist(replicate(1000, sum(rgamma(16, shape = 2, rate = 0.5))))
-
 
 
